@@ -1,0 +1,90 @@
+/* ==========================================
+   CivicPulse - Responsive Layout Styles
+   ========================================== */
+
+@media (max-width: 1024px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+  
+  .hero-stats {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .simulator-container {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .nav-menu.mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--border-glow);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .timeline-pipeline::before {
+    left: 20px;
+  }
+
+  .stage-node-icon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+
+  .timeline-stage-card {
+    padding-left: 60px;
+  }
+
+  .quiz-answers-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-container {
+    padding: 1.5rem;
+  }
+}
