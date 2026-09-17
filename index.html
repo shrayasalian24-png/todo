@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="CivicPulse - An innovative interactive platform to understand election stages, timelines, voting procedures, and election integrity.">
+  <title>CivicPulse | Interactive Election Awareness & Civic Education Hub</title>
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+  <!-- Ambient Animated Background -->
+  <div class="ambient-background">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container">
+      <a href="#" class="nav-brand">
+        <div class="brand-icon">
+          <i class="fas fa-vote-yea"></i>
+        </div>
+        <span>Civic<span class="gradient-text">Pulse</span></span>
+      </a>
+
+      <nav>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#journey" class="nav-link">Stage Roadmap</a></li>
+          <li><a href="#readiness" class="nav-link">Readiness Calculator</a></li>
+          <li><a href="#simulator" class="nav-link">Ballot Simulator</a></li>
+          <li><a href="#quiz" class="nav-link">Civic Quiz</a></li>
+          <li><a href="#security" class="nav-link">Election Security</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Accessibility Toolbar -->
+        <div class="accessibility-bar">
+          <button class="acc-btn" id="theme-toggle-btn" title="Toggle Theme (Dark / Light / High Contrast)">
+            <i class="fas fa-moon"></i>
+          </button>
+          <button class="acc-btn" id="font-decrease-btn" title="Decrease Text Size">A-</button>
+          <button class="acc-btn" id="font-increase-btn" title="Increase Text Size">A+</button>
+          <button class="acc-btn" id="tts-toggle-btn" title="Read Page Aloud">
+            <i class="fas fa-volume-up"></i>
+          </button>
+        </div>
+
+        <button class="acc-btn hidden" id="mobile-menu-toggle" style="font-size: 1.4rem;">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <div>
+          <div class="section-tag hero-badge">
+            <i class="fas fa-shield-alt"></i> Nonpartisan Civic Awareness Platform
+          </div>
+          <h1 class="hero-title">
+            Democracy Demystified: <br>
+            <span class="gradient-text">Understand Every Stage</span> of the Election Process
+          </h1>
+          <p class="hero-description">
+            From voter registration and primary candidates to casting your ballot and verifying vote
+            integrity—CivicPulse makes complex election procedures clear, accessible, and engaging for everyone.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#journey" class="btn btn-primary">
+              <span>Explore Election Journey</span>
+              <i class="fas fa-compass"></i>
+            </a>
+            <a href="#simulator" class="btn btn-secondary">
+              <i class="fas fa-laptop-code"></i> Try Ballot Simulator
+            </a>
+          </div>
+
+          <!-- Quick Search Bar -->
+          <div class="search-container">
+            <div class="search-input-wrap">
+              <i class="fas fa-search search-icon"></i>
+              <input type="text" id="quick-search-input" class="search-input"
+                placeholder="Search any election term, deadline, or voting procedure (e.g. Mail-in, Precinct, Canvass)...">
+            </div>
+            <div id="quick-search-results" class="search-results hidden"></div>
+          </div>
+
+          <!-- Quick Stats Bar -->
+          <div class="hero-stats" style="margin-top: 2rem;">
+            <div class="stat-item">
+              <div class="stat-number">6</div>
+              <div class="stat-label">Core Stages</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Audited Paper Trail</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">4</div>
+              <div class="stat-label">Voter Guides</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Countdown Widget -->
+        <div class="countdown-widget">
+          <div class="widget-title"><i class="fas fa-clock"></i> General Election Countdown</div>
+          <div class="widget-subtitle">November 3, 2026</div>
+
+          <div class="timer-grid">
+            <div class="timer-box">
+              <div class="timer-val" id="timer-days">--</div>
+              <div class="timer-unit">Days</div>
+            </div>
+            <div class="timer-box">
+              <div class="timer-val" id="timer-hours">--</div>
+              <div class="timer-unit">Hours</div>
+            </div>
+            <div class="timer-box">
+              <div class="timer-val" id="timer-mins">--</div>
+              <div class="timer-unit">Mins</div>
+            </div>
+            <div class="timer-box">
+              <div class="timer-val" id="timer-secs">--</div>
+              <div class="timer-unit">Secs</div>
+            </div>
+          </div>
+
+          <a href="#readiness" class="btn btn-accent" style="width: 100%;">
+            <i class="fas fa-user-check"></i> Am I Ready to Vote?
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Interactive Election Roadmap (The Journey of a Vote) -->
+  <section class="section" id="journey">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-route"></i> The Voter's Roadmap</span>
+        <h2 class="section-title">The 6 Stages of an Election</h2>
+        <p class="section-subtitle">
+          Follow the step-by-step lifecycle of how an election unfolds from initial voter registration to official vote
+          certification.
+        </p>
+      </div>
+
+      <!-- Category Filter Bar -->
+      <div class="timeline-filter-bar" id="timeline-filters"></div>
+
+      <!-- Timeline Pipeline -->
+      <div class="timeline-pipeline" id="timeline-pipeline"></div>
+    </div>
+  </section>
+
+  <!-- Section 2: Voter Readiness Calculator & Personalized Action Plan -->
+  <section class="section" id="readiness" style="background: rgba(15, 23, 42, 0.4);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-calculator"></i> Personalized Guide</span>
+        <h2 class="section-title">Voter Readiness Calculator</h2>
+        <p class="section-subtitle">
+          Select your voter situation to generate a custom step-by-step action checklist tailored to your specific
+          needs.
+        </p>
+      </div>
+
+      <div class="glass-card wizard-card">
+        <!-- Progress Steps -->
+        <div class="wizard-progress-bar">
+          <div class="wizard-progress-line" id="wizard-progress-line"></div>
+
+          <div class="wizard-step-node active" id="node-step-1">
+            <div class="wizard-node-circle">1</div>
+            <span class="wizard-node-label">Select Persona</span>
+          </div>
+
+          <div class="wizard-step-node" id="node-step-2">
+            <div class="wizard-node-circle">2</div>
+            <span class="wizard-node-label">Custom Action Plan</span>
+          </div>
+        </div>
+
+        <!-- Step 1: Select Persona -->
+        <div id="wizard-step-1">
+          <h3 style="font-size: 1.3rem; margin-bottom: 1.2rem; text-align: center;">Who are you voting as?</h3>
+          <div class="wizard-option-grid" id="wizard-persona-grid"></div>
+
+          <div style="text-align: center; margin-top: 2rem;">
+            <button class="btn btn-primary" id="wizard-next-btn" disabled>
+              <span>Generate My Checklist</span> <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Step 2: Generated Output -->
+        <div id="wizard-step-2" class="hidden">
+          <div id="wizard-checklist-container"></div>
+
+          <div style="text-align: center; margin-top: 1.5rem;">
+            <button class="btn btn-secondary" id="wizard-prev-btn">
+              <i class="fas fa-arrow-left"></i> Change Voter Persona
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Interactive Ballot Voting Simulator Booth -->
+  <section class="section" id="simulator">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-booth-curtain"></i> Hands-on Practice</span>
+        <h2 class="section-title">Interactive Ballot Simulator</h2>
+        <p class="section-subtitle">
+          Practice marking sample ballots, testing Ranked-Choice voting, and understanding instant error checks before
+          voting for real.
+        </p>
+      </div>
+
+      <div class="simulator-container">
+        <!-- Sidebar Navigation -->
+        <div class="booth-sidebar">
+          <h4 style="font-size: 1rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem;">Select
+            Ballot Format</h4>
+
+          <div class="booth-tab active" data-mode="general">
+            <i class="fas fa-check-square"></i>
+            <div>
+              <div>Single-Choice</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Standard General Election</div>
+            </div>
+          </div>
+
+          <div class="booth-tab" data-mode="rcv">
+            <i class="fas fa-list-ol"></i>
+            <div>
+              <div>Ranked-Choice Voting</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Rank 1st, 2nd, 3rd Choice</div>
+            </div>
+          </div>
+
+          <div class="booth-tab" data-mode="proposition">
+            <i class="fas fa-gavel"></i>
+            <div>
+              <div>Ballot Proposition</div>
+              <div style="font-size: 0.75rem; color: var(--text-muted);">Yes / No Public Measure</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Main Ballot Booth Content -->
+        <div class="booth-main" id="booth-main-content"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Myth vs. Fact Civic Quiz & Badges -->
+  <section class="section" id="quiz" style="background: rgba(15, 23, 42, 0.4);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-brain"></i> Civic Knowledge Challenge</span>
+        <h2 class="section-title">Myth vs. Fact Trivia & Achievements</h2>
+        <p class="section-subtitle">
+          Test your knowledge of election laws, debunk common misconceptions, and earn civic scholar badges!
+        </p>
+      </div>
+
+      <div class="glass-card quiz-card">
+        <div id="quiz-question-container"></div>
+      </div>
+
+      <!-- Badges Showcase -->
+      <div style="margin-top: 4rem; text-align: center;">
+        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem;"><i class="fas fa-award"
+            style="color: var(--accent-amber);"></i> Earned Civic Badges</h3>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">Unlock badges by completing quizzes and custom
+          readiness checklists.</p>
+        <div class="badges-grid" id="badges-grid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Election Integrity & Chain of Custody -->
+  <section class="section" id="security">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fas fa-shield-alt"></i> Trust & Security</span>
+        <h2 class="section-title">How Your Vote is Protected</h2>
+        <p class="section-subtitle">
+          Explore the multi-layered security protocols, paper audit trails, and bipartisan checks that guarantee vote
+          accuracy.
+        </p>
+      </div>
+
+      <div class="security-flow-grid" id="security-flow-grid"></div>
+    </div>
+  </section>
+
+  <!-- Global Modal System -->
+  <div class="modal-overlay" id="stage-modal-overlay">
+    <div class="modal-container">
+      <button class="modal-close-btn" onclick="TimelineModule.closeStageModal()"><i class="fas fa-times"></i></button>
+      <div id="stage-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <i class="fas fa-vote-yea" style="color: var(--accent-blue);"></i> Civic<span
+              class="gradient-text">Pulse</span>
+          </div>
+          <p class="footer-desc">
+            Empowering voters with transparent, interactive, and accessible civic education tools for a stronger
+            democratic foundation.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title">Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#journey" class="footer-link">6 Election Stages</a></li>
+            <li><a href="#readiness" class="footer-link">Readiness Calculator</a></li>
+            <li><a href="#simulator" class="footer-link">Ballot Simulator</a></li>
+            <li><a href="#quiz" class="footer-link">Civic Trivia Quiz</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title">Voter Resources</h4>
+          <ul class="footer-links">
+            <li><a href="#journey" class="footer-link">Voter Registration</a></li>
+            <li><a href="#journey" class="footer-link">Mail-In Ballot Tracking</a></li>
+            <li><a href="#security" class="footer-link">Paper Trail Security</a></li>
+            <li><a href="#readiness" class="footer-link">Accessibility Aids</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-column-title">Accessibility</h4>
+          <ul class="footer-links">
+            <li><span class="footer-link">High-Contrast Mode Ready</span></li>
+            <li><span class="footer-link">Text-to-Speech Compatible</span></li>
+            <li><span class="footer-link">Screen Reader Optimized</span></li>
+            <li><span class="footer-link">Resizing Font Controls</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 CivicPulse Educational Platform. Nonpartisan Public Civic Resource.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Application Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/timeline.js"></script>
+  <script src="js/wizard.js"></script>
+  <script src="js/simulator.js"></script>
+  <script src="js/quiz.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
